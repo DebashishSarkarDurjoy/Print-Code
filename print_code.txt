@@ -1,0 +1,28 @@
+Source URL: https://medium.com/@tashian/print-out-your-code-on-paper-7c760a376bca
+
+There’s an ancient but useful command line utility for this, called enscript.
+
+On MacOS, you’ll need to brew install enscript first.
+
+On Linux, you may already have it. If not, look for the package enscript or download it here.
+
+To print your code, run:
+
+enscript -1rG --line-numbers -p out.ps --highlight=python \
+  -c inputfile.py
+
+Then you can either open out.ps (on MacOS to open in your default PostScript viewer), or print it to your default printer with lpr out.ps.
+
+Enscript has a lot of options. Here are the most valuable options:
+
+-1 -2 -3 -4 number of columns per page
+-r rotate (landscape mode)
+-G fancy header (with filename, date & time)
+--color=1 if you have a color printer
+-w html if you want HTML output instead of PostScript
+--help-highlight will show which languages have syntax highlighting available
+
+Here’s a nice looking version that adds--color=1 and -2. If your line lengths aren’t out of control, this is a good starting point.
+
+enscript -2rG --line-numbers -p out.ps --highlight=python \
+  --color=1 -c inputfile.py
